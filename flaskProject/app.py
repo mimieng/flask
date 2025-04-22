@@ -17,7 +17,9 @@ migrate = Migrate(app, db)
 app.register_blueprint(qa_bp)
 
 app.register_blueprint(auth_bp)
-
+# flask db init  只需要执行一次
+# flask db migrate  将orm模型迁移脚本
+# flask db upgrade 将迁移脚本映射到数据库
 
 if __name__ == '__main__':
     app.run()
