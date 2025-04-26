@@ -1,5 +1,5 @@
 import wtforms
-from wtforms.validators import Email, Length,EqualTo
+from wtforms.validators import Email, Length,EqualTo,InputRequired
 from models import UserModel ,EmailCaptchaModel
 from exts import db
 # 验证前端表单提交的数据是否符合要求
@@ -27,3 +27,15 @@ class RegisterForm(wtforms.Form):
         else:
             db.session.delete(captcha_models)
             db.session.commit()
+class LoginForm(wtforms.Form):
+    email = wtforms.StringField(validators=[Email(message="邮箱格式错误")])
+    password = wtforms.StringField(validators=[Length(min=6, max=20, message="密码格式错误")])
+
+class QuestionForm(wtforms.Form):
+    title=wtforms.StringField(validators=[Length(min=3,max=100,message="标题格式错误")])
+    content=wtforms.StringField(validators=[Length(min=3,message="内容格式错误")])
+
+
+class AnswerForm(wtforms.Form):
+    content = wtforms.StringField(validators=[Length(min=3, message="内容格式错误")])
+    question_id = wtforms.IntegerField(validators=[InputRequired(message="必须要传入问题id！")])

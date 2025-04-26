@@ -6,7 +6,7 @@
 // 3. 验证用户输入的验证码和发送是否一致
 function bindEmailCaptchaClick(){
     $("#captcha-btn").click(function(event){ // 通过“#”号获取html中的id(captcha-btn)
-        var $this = $(this) //'$this' 是当前按钮的jquery对象
+        var $this = $(this); //'$this' 是当前按钮的jquery对象
         event.preventDefault(); // 按钮有时默认提交web，这里阻止默认
 
     //通过[name='']获取html中的name
@@ -29,19 +29,19 @@ function bindEmailCaptchaClick(){
                         $this.text("获取验证码")           // 重新上线'获取验证码'button
                         bindEmailCaptchaClick();        // call自己，可以重复以上动作
                     }
-                },1000)
-                alert("verify code sent")
+                },1000);
+                alert("verify code sent");
             }else{
-                alert("not success")
+                alert("not success");
             }
         },
         fail:function(error){
             console.log(error);
         }
     })
-    })
+    });
 }
 
 $(function (){
     bindEmailCaptchaClick();
-})
+});

@@ -1,3 +1,5 @@
+SECRET_KEY = 'shdflksaf/.sdfsd'
+
 # 数据库配置
 HOSTNAME = 'localhost'
 PORT     = '3306'
